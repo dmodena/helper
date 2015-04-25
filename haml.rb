@@ -12,13 +12,25 @@ class Haml
   def folder
     if @input
       if !File.directory?(@input)
-        `md #{@input}`
+        @inp = reverse_slash(@input)
+        `md #{@inp}`
       end
     end
     if @output
       if !File.directory?(@output)
-        `md #{@output}`
+        @out = reverse_slash(@output)
+        `md #{@out}`
       end
     end
   end
+
+  private
+
+  def reverse_slash(path)
+    if path.include? "/"
+      path["/"] = "\\"
+    end
+    path
+  end
+
 end
