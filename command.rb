@@ -2,6 +2,7 @@ require 'optparse'
 load 'haml.rb'
 load 'sass.rb'
 load 'coffee.rb'
+load 'guard.rb'
 load 'version.rb'
 
 options = {}
@@ -50,6 +51,11 @@ OptionParser.new do |opts|
     end
   end
 
+  options[:guard] = false
+  opts.on("-g", "--guard", "Create guard automation") do
+    options[:guard] = true
+  end
+
   opts.on("-v", "--version", "Show version") do
     puts "Umsizi #{VERSION}"
   end
@@ -67,4 +73,7 @@ if options[:sass]
 end
 if options[:coffee]
   Coffee.new(options[:coffee], options[:coffee_input], options[:coffee_output])
+end
+if options[:guard]
+  Guard.new(options[:guard], options[:haml], options[:sass], options[:coffee])
 end
