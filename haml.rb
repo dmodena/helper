@@ -3,19 +3,22 @@ class Haml
     @option = option
     @input = input
     @output = output
-    @message = ""
 
-    if @input
-      if @output
-        @message = "Input: #{@input}, Output: #{@output}"
-      else
-        @message = "Input: #{@input}"
-      end
-    elsif @output
-      @message = "Output: #{@output}"
-    else
-      @message = "You chose haml as your template"
+    if @input || @output
+      folder
     end
-    puts @message
+  end
+
+  def folder
+    if @input
+      if !File.directory?(@input)
+        `md #{@input}`
+      end
+    end
+    if @output
+      if !File.directory?(@output)
+        `md #{@output}`
+      end
+    end
   end
 end
