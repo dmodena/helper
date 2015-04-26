@@ -1,7 +1,5 @@
 require 'optparse'
-load 'haml.rb'
-load 'sass.rb'
-load 'coffee.rb'
+require_relative 'umsizi'
 load 'guard.rb'
 load 'version.rb'
 
@@ -66,13 +64,14 @@ OptionParser.new do |opts|
 end.parse!
 
 if options[:haml]
-  Haml.new(options[:haml], options[:haml_input], options[:haml_output])
+  Umsizi::Tree::run(options[:haml], options[:haml_input], options[:haml_output])
+  # Haml.new(options[:haml], options[:haml_input], options[:haml_output])
 end
 if options[:sass]
-  Sass.new(options[:sass], options[:sass_input], options[:sass_output])
+  Umsizi::Tree::run(options[:sass], options[:sass_input], options[:sass_output])
 end
 if options[:coffee]
-  Coffee.new(options[:coffee], options[:coffee_input], options[:coffee_output])
+  Umsizi::Tree::run(options[:coffee], options[:coffee_input], options[:coffee_output])
 end
 if options[:guard]
   Guard.new(options[:guard], options[:haml], options[:sass], options[:coffee])
