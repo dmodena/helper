@@ -65,7 +65,6 @@ end.parse!
 
 if options[:haml]
   Umsizi::Tree::run(options[:haml], options[:haml_input], options[:haml_output])
-  # Haml.new(options[:haml], options[:haml_input], options[:haml_output])
 end
 if options[:sass]
   Umsizi::Tree::run(options[:sass], options[:sass_input], options[:sass_output])
@@ -73,6 +72,11 @@ end
 if options[:coffee]
   Umsizi::Tree::run(options[:coffee], options[:coffee_input], options[:coffee_output])
 end
+
+if options[:haml] || options[:sass] || options[:coffee]
+  Umsizi::Gemfile::run(options[:haml], options[:sass], options[:coffee], options[:guard])
+end
+
 if options[:guard]
   Guard.new(options[:guard], options[:haml], options[:sass], options[:coffee])
 end
