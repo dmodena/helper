@@ -9,13 +9,13 @@ module Umsizi
       if input
         if !File.directory?(input)
           inp = reverse_slash(input)
-          `md #{inp}`
+          `mkdir #{inp}`
         end
       end
       if output
         if !File.directory?(output)
           out = reverse_slash(output)
-          `md #{out}`
+          `mkdir #{out}`
         end
       end
     end
