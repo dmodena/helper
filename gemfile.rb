@@ -1,14 +1,13 @@
 module Umsizi
   module Gemfile
-    def self.run(haml, sass, coffee, guard)
+    def self.run(haml = nil, sass = nil, coffee = nil, guard = nil)
       if !File.exist?("Gemfile")
-        output = File.new("Gemfile", "w")
-        content = self.write(haml, sass, coffee, guard)
-        output.puts(content)
+        content = self.gem(haml, sass, coffee, guard)
+        self.write(content)
       end
     end
     private
-    def self.write(haml, sass, coffee, guard)
+    def self.gem(haml, sass, coffee, guard)
       content = "source 'https://rubygems.org'\n\n"
       if haml
         content += "gem 'haml'\n"
@@ -29,6 +28,10 @@ module Umsizi
         end
       end
       content
+    end
+    def self.write(content)
+      output = File.new("Gemfile", "w")
+      output.puts(content)
     end
   end
 end

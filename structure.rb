@@ -5,6 +5,7 @@ module Umsizi
         self.folder(input, output)
       end
     end
+    private
     def self.folder(input, output)
       if input
         if !File.directory?(input)
@@ -19,7 +20,6 @@ module Umsizi
         end
       end
     end
-    private
     def self.reverse_slash(path)
       if path.include? "/"
         path["/"] = "\\"

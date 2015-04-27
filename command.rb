@@ -1,7 +1,7 @@
 require 'optparse'
 require_relative 'structure'
 require_relative 'gemfile'
-load 'guard.rb'
+require_relative 'guardfile'
 load 'version.rb'
 
 options = {}
@@ -79,5 +79,5 @@ if options[:haml] || options[:sass] || options[:coffee]
 end
 
 if options[:guard]
-  Guard.new(options[:guard], options[:haml], options[:sass], options[:coffee])
+  Umsizi::Guardfile::run(options[:haml_input], options[:haml_output], options[:sass_input], options[:sass_output], options[:coffee_input], options[:coffee_output])
 end
