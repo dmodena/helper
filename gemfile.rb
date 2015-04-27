@@ -27,6 +27,9 @@ module Umsizi
           content += "gem 'guard-coffeescript'\n"
         end
       end
+      if Gem.win_platform?
+        content += "gem 'wdm'\n"
+      end
       content
     end
     def self.write(content)

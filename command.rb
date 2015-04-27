@@ -79,5 +79,5 @@ if options[:haml] || options[:sass] || options[:coffee]
 end
 
 if options[:guard]
-  Umsizi::Guardfile::run(options[:haml_input], options[:haml_output], options[:sass_input], options[:sass_output], options[:coffee_input], options[:coffee_output])
+  Umsizi::Guardfile::run(options[:haml], options[:haml_input], options[:haml_output], options[:sass], options[:sass_input], options[:sass_output], options[:coffee], options[:coffee_input], options[:coffee_output])
 end

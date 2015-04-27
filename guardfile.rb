@@ -1,15 +1,15 @@
 module Umsizi
   module Guardfile
-    def self.run(haml_input = nil, haml_output = nil, sass_input = nil, sass_output = nil, coffee_input = nil, coffee_output = nil)
+    def self.run(haml = nil, haml_input = nil, haml_output = nil, sass = nil, sass_input = nil, sass_output = nil, coffee = nil, coffee_input = nil, coffee_output = nil)
       if !File.exist?("Guardfile")
         content = ""
-        if haml_input || haml_output
+        if haml
           content += self.haml(haml_input, haml_output)
         end
-        if sass_input || sass_output
+        if sass
           content += self.sass(sass_input, sass_output)
         end
-        if coffee_input || coffee_output
+        if coffee
           content += self.coffee(coffee_input, coffee_output)
         end
         self.write(content)
