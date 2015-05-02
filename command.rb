@@ -10,8 +10,6 @@ OptionParser.new do |opts|
   opts.banner = "Usage: ruby umsizi.rb [options]"
 
   options[:haml] = false
-  options[:haml_input] = nil
-  options[:haml_output] = nil
   opts.on("--haml", "Choose Haml as template") do
     options[:haml] = true
     if options[:haml]
